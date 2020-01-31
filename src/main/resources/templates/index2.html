@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Form</title>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    
+    <script >
+    
+    var dataSet = [(${datass})];
+    
+	$(document).ready(function() {
+		
+	    $('#example').DataTable( {
+	        data: dataSet,
+	        columns: [
+	            { title:"data"},
+	            { title:"testo"}
+			]
+	    } );
+	    
+	    $("button").click(function(){
+		    var testo = $("#testo").val();
+		    $.ajax({
+		        type: "POST",
+		        url: "/carica",
+		        data: "testo=" + testo ,
+		        dataType: "html",
+		        
+		      });
+		    window.location.reload();
+		} );
+	    
+	});
+	
+	</script>
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+
+</head>
+<body>
+
+	<br><br>
+	
+	<table id="example" class="display" width="100%"></table>
+
+	<br>
+	<br>
+	<div>
+	<table>
+	<tr>
+		<td>inserisci una parola: <input type="text" id="testo" name="testo"> <button>invia dati al db</button> </td>
+	</tr>     
+	</table>
+	</div>    
+	
+	<br>
+	<br>
+	
+</body>
+</html>
