@@ -38,13 +38,23 @@ public class CSite {
     	return "index";
     }
     
+    @RequestMapping("/register")
+    public String buttons() {
+    	return "register";
+    }
     
-    
-    @RequestMapping("/prova")
-    public String prova1(Model model) {
-    	//Data d = dataService.findByTesto("nike");
-    	//model.addAttribute("data", d);
-    	return "prova";
+    @RequestMapping("/tables")
+    public String tables(Model model) {
+    	List<Data> time = dataService.getAll();
+    	String datass = " [ " ;
+    	for(Data x : time)
+    	{
+    		datass = datass+x.toString()+",";
+    	}
+    	datass=datass+"]";
+    	//passo le date alla pagina index.html
+    	model.addAttribute("datass", datass);
+    	return "tables";
     }
     
     
