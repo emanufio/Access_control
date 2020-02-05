@@ -76,5 +76,7 @@ public class User {
 		return "[ \" "+nome+" \", \" "+cognome+" \", \" "+email+" \" , \" "+psw+" \" ]" ;
 	}
 	
+	
+	public void cacca () {}
 
 }
