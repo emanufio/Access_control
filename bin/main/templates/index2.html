@@ -17,8 +17,11 @@
 	    $('#example').DataTable( {
 	        data: dataSet,
 	        columns: [
-	            { title:"data"},
-	            { title:"testo"}
+	            { title:"data_ingresso"},
+	            { title:"nome"},
+	            { title:"cognome"},
+	            { title:"data_uscita"},
+	            { title:"uscita"}
 			]
 	    } );
 	    
@@ -27,7 +30,6 @@
 		    $.ajax({
 		        type: "POST",
 		        url: "/carica",
-		        data: "testo=" + testo ,
 		        dataType: "html",
 		        
 		      });

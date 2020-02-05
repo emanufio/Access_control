@@ -3,13 +3,13 @@ package Second_site.repository;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
-import Second_site.Entity.Data;
+import Second_site.Entity.User;
 
 //indica che la classe fornisce il meccanismo per il salvataggio, recupero, ricerca
 //aggiornamento e cancellazione oggetti nel db
 @Repository
-public interface DataRepository extends MongoRepository <Data, Integer> {
+public interface UserRepository extends MongoRepository <User, Integer> {
 	
-	public Data findByTesto(String testo);
+	public User findByNome(String nome);
 	
 }
