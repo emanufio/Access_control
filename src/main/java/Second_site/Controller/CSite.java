@@ -168,10 +168,6 @@ public class CSite {
     	//System.out.println("psw:"+psw);
     	//System.out.println("pass:"+psw);
     	userService.delete(psw);
-    }
-    
-    
-    
-    
+    }   
     
 }

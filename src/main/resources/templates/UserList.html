@@ -192,52 +192,26 @@
 			            { "data": "number" },
 			            {
 			                data: null,
-			                defaultContent: '<button >Delete</button>'
+			                defaultContent: '<button class="btn btn-danger" >Delete</button>'
 			            }
 			    	]
 				});
 				
 				
 				$("#dataTable").on('click', 'button', function (){
-					/*
 				    //var testo = $("#testo").val();
 				    //var $tr = $(this).closest('tr');
 				    var data = table.row( $(this).closest('tr') ).data();
-				    var psw = JSON.stringify(data);
-				    //alert(psw);
-				    //var keys = [];
-				    //for(var k in psw) keys.push(k);
-				    //alert(keys[0]);
-				    
-				    //alert(psw.nome);
-				    var ciao;
-				    var psw = JSON.stringify(data, function (key, value) {
-				    	  if (key == "psw") {
-				    	    ciao=value;
-				    	    //alert (ciao);
-				    	  } else {
-				    	    return value;
-				    	  }
-				    	});
-				    //alert(ciao);
+				    var psw = data.psw;
 				    $.ajax({
 				        type: "POST",
 				        url: "/delete",
-				        data: "psw=" + ciao ,
+				        data: "psw=" + psw ,
 				        dataType: "html",
 				      });
 				    window.location.reload();
 				} );
-				*/
-				
-					var data = table.row( $(this).closest('tr') ).data();
-					var result = Object.entries(data);
-				          
-				        // Using Number() to convert key to number type 
-				        // Using obj[key] to retrieve key value 
-				        //return [Number(key), data[key]]; 
-					alert(result[3]);
-				});
+			
 			})
 		</script>
 </body>
