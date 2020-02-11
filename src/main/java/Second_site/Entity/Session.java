@@ -1,5 +1,6 @@
 package Second_site.Entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 
@@ -7,15 +8,19 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Session {
 	
 	private String data_ingresso;
-	private String data_uscita;
-	private String nome;
+	private String ora_ingresso;
+	private String name;
 	private String cognome;
 	private boolean uscita;
+	private String data_uscita;
+	private String ora_uscita;
+	private ObjectId _id;
 	
-	public Session(String data_ingresso,String nome,String cognome) 
+	public Session(String data_ingresso,String ora_ingresso,String name,String cognome) 
 	{
 		this.data_ingresso = data_ingresso;
-		this.nome=nome;
+		this.ora_ingresso = ora_ingresso;
+		this.name=name;
 		this.cognome=cognome;
 		this.data_uscita=null;
 		this.uscita=false;
@@ -31,14 +36,24 @@ public class Session {
 		return data_ingresso;
 	}
 	
-	public void setNome(String nome)
+	public void setOra_ingresso(String ora) 
 	{
-		this.nome = nome;
+		this.ora_ingresso = ora;
+	}
+	
+	public String getOra_ingresso()
+	{
+		return ora_ingresso;
+	}
+	
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 	
 	public String getNome()
 	{
-		return this.nome;
+		return this.name;
 	}
 	
 	public void setCognome(String cognome)
@@ -61,6 +76,16 @@ public class Session {
 		return this.data_uscita;
 	}
 
+	public void setOra_uscita(String ora) 
+	{
+		this.ora_uscita = ora;
+	}
+	
+	public String getOra_uscita()
+	{
+		return this.ora_uscita;
+	}
+	
 	public void setUscita(boolean uscita)
 	{
 		this.uscita = uscita;
@@ -71,10 +96,19 @@ public class Session {
 		return uscita;
 	}
 	
+	public void set_id(ObjectId id)
+	{
+		this._id = id;
+	}
+	
+	public ObjectId get_id()
+	{
+		return _id;
+	}
 	
 	public String toString() 
 	{
-		return "[ \" "+data_ingresso+" \", \" "+nome+" \", \" "+cognome+" \", \" "+uscita+" \", \" "+data_uscita+" \" ]" ;
+		return "[ \" "+data_ingresso+" \", \" "+name+" \", \" "+cognome+" \", \" "+uscita+" \", \" "+data_uscita+" \" ]" ;
 	}
 
 }

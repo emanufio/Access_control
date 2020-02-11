@@ -15,9 +15,9 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	public User create(String nome,String cognome,String email) 
+	public User create(String nome,String cognome,String email,String number) 
 	{
-		return userRepository.save(new User(nome,cognome,email));
+		return userRepository.save(new User(nome,cognome,email,number));
 	}
 	
 	public List<User> getAll()
@@ -28,6 +28,11 @@ public class UserService {
 	public User findByTesto(String nome)
 	{
 		return userRepository.findByNome(nome);
+	}
+	
+	public void delete(String psw) {
+		User u = userRepository.findByPsw(psw);
+		userRepository.delete(u);
 	}
 	
 }

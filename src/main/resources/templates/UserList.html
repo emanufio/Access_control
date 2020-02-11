@@ -11,7 +11,6 @@
 
   <title>SB Admin 2 - Dashboard</title>
   
-  
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -21,29 +20,6 @@
   
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  
-  
-  <script >
-    
-    var dataSet = [(${datass})];
-    
-	$(document).ready(function() {
-		
-	    $('#dataTable').DataTable( {
-	        data: dataSet,
-	        columns: [
-	            { title:"nome"},
-	            { title:"cognome"},
-	            { title:"email"},
-	            { title:"psw"}
-			]
-	    } );
-	    
-	});
-	
-	</script>
-	
 </head>
 
 <body id="page-top">
@@ -130,11 +106,23 @@
           <!-- Content Row -->
           <div >
 
-            
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"></table>
-            
 
-          </div>
+						<table class="table table-bordered" id="dataTable" width="100%"
+							cellspacing="0">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Cognome</th>
+									<th>Email</th>
+									<th>Password</th>
+									<th>Numero di telefono</th>
+									<th>Delete</th>
+								</tr>
+							</thead>
+							
+						</table>
+
+					</div>
 
       	</div>
       
@@ -183,14 +171,75 @@
 
   <!-- Page level plugins -->
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+  
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-  <script src="js/demo/datatables-demo.js"></script>
-
+		<script>
+			$(document).ready(function() {
+				
+				var table = $('#dataTable').DataTable({
+					"ajax" : {
+						"url" : "/ajax/getusersasync",
+						"type": "POST",
+						"datatype": "json",
+						"dataSrc": "",
+			        },
+			        "columns": [
+			            { "data": "nome" },
+			            { "data": "cognome" },
+			            { "data": "email" },
+			            { "data": "psw" },
+			            { "data": "number" },
+			            {
+			                data: null,
+			                defaultContent: '<button >Delete</button>'
+			            }
+			    	]
+				});
+				
+				
+				$("#dataTable").on('click', 'button', function (){
+					/*
+				    //var testo = $("#testo").val();
+				    //var $tr = $(this).closest('tr');
+				    var data = table.row( $(this).closest('tr') ).data();
+				    var psw = JSON.stringify(data);
+				    //alert(psw);
+				    //var keys = [];
+				    //for(var k in psw) keys.push(k);
+				    //alert(keys[0]);
+				    
+				    //alert(psw.nome);
+				    var ciao;
+				    var psw = JSON.stringify(data, function (key, value) {
+				    	  if (key == "psw") {
+				    	    ciao=value;
+				    	    //alert (ciao);
+				    	  } else {
+				    	    return value;
+				    	  }
+				    	});
+				    //alert(ciao);
+				    $.ajax({
+				        type: "POST",
+				        url: "/delete",
+				        data: "psw=" + ciao ,
+				        dataType: "html",
+				      });
+				    window.location.reload();
+				} );
+				*/
+				
+					var data = table.row( $(this).closest('tr') ).data();
+					var result = Object.entries(data);
+				          
+				        // Using Number() to convert key to number type 
+				        // Using obj[key] to retrieve key value 
+				        //return [Number(key), data[key]]; 
+					alert(result[3]);
+				});
+			})
+		</script>
 </body>
 
 </html>
