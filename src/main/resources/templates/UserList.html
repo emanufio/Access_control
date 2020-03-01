@@ -28,62 +28,62 @@
   <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+   <ul
+			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+			id="accordionSidebar">
+			<br>
+			<!-- Sidebar - Brand -->
+			<a
+				class="sidebar-brand d-flex align-items-center justify-content-center"
+				href="/">
+				<img src="images/UnivAQ_logoB_bianco.png" width=150 heigth=150>
+			</a>
+			<br>
+			<!-- Divider -->
+			<hr class="sidebar-divider my-0">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
-      </a>
+			<!-- Nav Item - Dashboard -->
+			<li class="nav-item active"><a class="nav-link" href="/"> <i
+					class="fas fa-home"></i> <span>Home Page</span></a></li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+			<!-- Divider -->
+			<hr class="sidebar-divider">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="/">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Home Page</span></a>
-      </li>
+			<!-- Heading 
+			<div class="sidebar-heading">Interface</div> -->
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+			<!-- Nav Item - Pages Collapse Menu 
+			<li class="nav-item"><a class="nav-link collapsed" href="#"
+				data-toggle="collapse" data-target="#collapseTwo"
+				aria-expanded="true" aria-controls="collapseTwo"> <i
+					class="fas fa-fw fa-cog"></i> <span>Azioni</span>
+			</a>
+				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+					data-parent="#accordionSidebar">
+					<div class="bg-white py-2 collapse-inner rounded">
+						<h6 class="collapse-header">Azioni:</h6>
+						<a class="collapse-item" href="/UserList">Lista Utenti</a>
+						 <a class="collapse-item" href="/carica">Ingresso</a>
+						 <a class="collapse-item" href="/exit">Uscita</a>
+					</div>
+				</div></li> -->
+				
+			<li class="nav-item"><a class="nav-link" href="/UserList"> <i
+					class="fas fa-list"></i> <span>Lista utenti</span></a></li>
 
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
-      </div>
+			<!-- Nav Item - Utilities Collapse Menu -->
+			<li class="nav-item"><a class="nav-link" href="/register"> <i
+					class="fas fa-user-plus"></i> <span>Registra un utente</span></a></li>
+					
+			<li class="nav-item"><a class="nav-link" href="/searchByData"> <i
+					class="fas fa-search"></i> <span>Cerca per data</span></a></li>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Azioni</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Azioni:</h6>
-            <a class="collapse-item" href="/UserList">Lista Utenti</a>
-            <a class="collapse-item" href="/carica">Ingresso</a>
-          </div>
-        </div>
-      </li>
+			<!-- Divider -->
+			<hr class="sidebar-divider">
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="/register">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Registra un utente</span></a>
-      </li>
 
-      <!-- Divider -->
-      <hr class="sidebar-divider">
 
-      
-
-    </ul>
+		</ul>
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -174,46 +174,7 @@
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
   
 
-		<script>
-			$(document).ready(function() {
-				
-				var table = $('#dataTable').DataTable({
-					"ajax" : {
-						"url" : "/ajax/getusersasync",
-						"type": "POST",
-						"datatype": "json",
-						"dataSrc": "",
-			        },
-			        "columns": [
-			            { "data": "nome" },
-			            { "data": "cognome" },
-			            { "data": "email" },
-			            { "data": "psw" },
-			            { "data": "number" },
-			            {
-			                data: null,
-			                defaultContent: '<button class="btn btn-danger" >Delete</button>'
-			            }
-			    	]
-				});
-				
-				
-				$("#dataTable").on('click', 'button', function (){
-				    //var testo = $("#testo").val();
-				    //var $tr = $(this).closest('tr');
-				    var data = table.row( $(this).closest('tr') ).data();
-				    var psw = data.psw;
-				    $.ajax({
-				        type: "POST",
-				        url: "/delete",
-				        data: "psw=" + psw ,
-				        dataType: "html",
-				      });
-				    window.location.reload();
-				} );
-			
-			})
-		</script>
+		<script src="js/user-list.js"> </script>
 </body>
 
 </html>

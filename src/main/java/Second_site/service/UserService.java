@@ -25,14 +25,19 @@ public class UserService {
 		return userRepository.findAll();
 	}
 	
-	public User findByTesto(String nome)
+	public User findByTesto(String name)
 	{
-		return userRepository.findByNome(nome);
+		return userRepository.findByName(name);
 	}
 	
-	public void delete(String psw) {
-		User u = userRepository.findByPsw(psw);
+	public void delete(String password) {
+		User u = userRepository.findByPassword(password);
 		userRepository.delete(u);
+	}
+	
+	public User findByPsw(String password) {
+		User u = userRepository.findByPassword(password);
+		return u;
 	}
 	
 }

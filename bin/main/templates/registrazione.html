@@ -38,33 +38,28 @@
 		<ul
 			class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 			id="accordionSidebar">
-
+			<br>
 			<!-- Sidebar - Brand -->
 			<a
 				class="sidebar-brand d-flex align-items-center justify-content-center"
-				href="index.html">
-				<div class="sidebar-brand-icon rotate-n-15">
-					<i class="fas fa-laugh-wink"></i>
-				</div>
-				<div class="sidebar-brand-text mx-3">
-					SB Admin <sup>2</sup>
-				</div>
+				href="/">
+				<img src="images/UnivAQ_logoB_bianco.png" width=150 heigth=150>
 			</a>
-
+			<br>
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link" href="/"> <i
-					class="fas fa-fw fa-tachometer-alt"></i> <span>Home Page</span></a></li>
+					class="fas fa-home"></i> <span>Home Page</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
-			<!-- Heading -->
-			<div class="sidebar-heading">Interface</div>
+			<!-- Heading 
+			<div class="sidebar-heading">Interface</div> -->
 
-			<!-- Nav Item - Pages Collapse Menu -->
+			<!-- Nav Item - Pages Collapse Menu 
 			<li class="nav-item"><a class="nav-link collapsed" href="#"
 				data-toggle="collapse" data-target="#collapseTwo"
 				aria-expanded="true" aria-controls="collapseTwo"> <i
@@ -74,14 +69,21 @@
 					data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Azioni:</h6>
-						<a class="collapse-item" href="/UserList">Lista Utenti</a> <a
-							class="collapse-item" href="/carica">Ingresso</a>
+						<a class="collapse-item" href="/UserList">Lista Utenti</a>
+						 <a class="collapse-item" href="/carica">Ingresso</a>
+						 <a class="collapse-item" href="/exit">Uscita</a>
 					</div>
-				</div></li>
+				</div></li> -->
+				
+			<li class="nav-item"><a class="nav-link" href="/UserList"> <i
+					class="fas fa-list"></i> <span>Lista utenti</span></a></li>
 
 			<!-- Nav Item - Utilities Collapse Menu -->
 			<li class="nav-item"><a class="nav-link" href="/register"> <i
-					class="fas fa-fw fa-folder"></i> <span>Registra un utente</span></a></li>
+					class="fas fa-user-plus"></i> <span>Registra un utente</span></a></li>
+					
+			<li class="nav-item"><a class="nav-link" href="/searchByData"> <i
+					class="fas fa-search"></i> <span>Cerca per data</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -126,23 +128,27 @@
 													<div class="col-sm-6 mb-3 mb-sm-0">
 														<input type="text" name="nome"
 															class="form-control form-control-user"
-															id="exampleFirstName" placeholder="Nome ">
+															id="exampleFirstName" placeholder="Nome" required pattern="[A-Za-z]+"
+															title="nome non valido">
 													</div>
 													<div class="col-sm-6">
 														<input type="text" name="cognome"
 															class="form-control form-control-user"
-															id="exampleLastName" placeholder="Cognome">
+															id="exampleLastName" placeholder="Cognome" required pattern="[A-Za-z]+"
+															title="cognome non valido">
 													</div>
 												</div>
 												<div class="form-group">
 													<input type="email" name="email"
 														class="form-control form-control-user"
-														id="exampleInputEmail" placeholder="Indirizzo email">
+														id="exampleInputEmail" placeholder="Indirizzo email" required 
+														title="inserisci l email nel giusto formato (stringa@dominio) ">
 												</div>
 												<div class="form-group">
 													<input type="text" name="number"
 														class="form-control form-control-user"
-														id="exampleInputNumber" placeholder="Numero di telefono">
+														id="exampleInputNumber" placeholder="Numero di telefono" required pattern="[0-9]{10}"
+														title="inserisci la data nel giusto formato (gg/mm/aaaa) ">
 												</div>
 												<button class="btn btn-primary btn-user btn-block"
 													type="submit">Aggiungi un utente</button>

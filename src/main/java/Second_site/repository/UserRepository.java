@@ -12,8 +12,8 @@ import Second_site.Entity.User;
 @Repository
 public interface UserRepository extends MongoRepository <User, String> {
 	
-	public User findByNome(String nome);
+	public User findByName(String name);
 
-	public User findByPsw(String psw);
+	public User findByPassword(String password);
 	
 }

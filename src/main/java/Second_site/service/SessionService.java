@@ -13,30 +13,52 @@ import Second_site.repository.SessionRepository;
 public class SessionService {
 	
 	@Autowired
-	private SessionRepository dataRepository;
+	private SessionRepository sessionRepository;
 	
-	public Session create(String data,String ora,String nome,String cognome) 
+	public Session create(long date,String name,String surname,String password) 
 	{
-		return dataRepository.save(new Session(data,ora,nome,cognome));
+		return sessionRepository.save(new Session(date,name,surname,password));
 	}
 	
 	public List<Session> getAll()
 	{
-		return dataRepository.findAll();
+		return sessionRepository.findAll();
 	}
 	
-	public List<Session> findByUscita(boolean uscita)
+	public List<Session> findBetweenData(long d1,long d2)
 	{
-		return dataRepository.findByUscita(uscita);
+		return sessionRepository.findBetweenData(d1, d2);
 	}
 	
-	public Session update(String nome, String data, String ora)
+	public List<Session> findByData(long data)
+	{
+		return sessionRepository.findByData(data);
+	}
+	
+	public List<Session> findByTs_exit()
+	{
+		return sessionRepository.findByTsExit();
+	}
+	
+	public List<Session> findByUscitaAndData(long data)
+	{
+		return sessionRepository.findByUscitaAndData(data);
+	}
+	
+	public Session update(String psw, long data1, long data2)
 	{ 
 		//Session s = dataRepository.findByNomeAndUscita("stefano", "false");
-		Session s = dataRepository.findByNomeAndUscita(nome, false);
-		s.setData_uscita(data);
-		s.setOra_uscita(ora);
-		return dataRepository.save(s);
+		Session s = sessionRepository.findByPswAndUscitaAndData(psw, data1);
+		if (s!=null)
+		{
+			s.setTsExit(data2);
+			return sessionRepository.save(s);
+		}
+		else
+		{
+			System.out.println("sessione non trovata");
+			return null;
+		}	
 	}
 	
 }
