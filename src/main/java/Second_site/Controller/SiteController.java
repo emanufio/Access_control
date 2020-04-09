@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +26,7 @@ import Second_site.service.UserService;
 
 //controllore web del sito
 @Controller
-public class SiteController {
+public class SiteController implements ErrorController {
 	
 	//indico al framework le dipendenze da iniettare
 	@Autowired
@@ -113,7 +114,8 @@ public class SiteController {
     	return "search_for_data";
     }
     
-    @RequestMapping(value = "/ajax/getusersasync", method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = "/ajax/getusersasync"
+    		, method = RequestMethod.POST, produces = "application/json")
     @ResponseBody
     public String getUsersAsync() {
     	
@@ -218,6 +220,16 @@ public class SiteController {
     	userService.delete(psw);
     }   
     
+    @Override
+    public String getErrorPath() {
+        return "/error";
+    }
+    
+    @RequestMapping("/error")
+    public String error()
+    {
+    	return "404";
+    }
     /*
     @PostMapping("/prova")
     public void prova(@RequestParam String password, @RequestParam String richiesta,@RequestParam String immagine)

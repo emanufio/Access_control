@@ -15,9 +15,7 @@ import Second_site.Entity.Session;
 public interface SessionRepository extends MongoRepository <Session, Integer> 
 {
 	
-	public List<Session> findByTsExit();
-	
-	public Session findByName(String name);
+	public List<Session> findByPassword(String password);
 	
 	@Query("{'password' : ?0 , 'tsExit' : 0}")
 	public Session findByPswAndUscita(String psw);
@@ -37,5 +35,7 @@ public interface SessionRepository extends MongoRepository <Session, Integer>
 	
 	@Query(" { 'password': ?0 , 'tsExit' : 0 , 'tsEntry' : {$gte: ?1} }")
 	public Session findByPswAndUscitaAndData(String psw, long data);
+	
+	public List<Session> findByTsExit();
 	
 }

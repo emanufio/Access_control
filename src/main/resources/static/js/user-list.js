@@ -15,7 +15,7 @@ $(document).ready(function() {
 			            { "data": "number" },
 			            {
 			                data: null,
-			                defaultContent: '<button class="btn btn-danger" >Delete</button>'
+			                defaultContent: '<button class="btn btn-danger" >Cancella</button>'
 			            }
 			    	],
 			    	"language": {
